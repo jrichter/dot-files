@@ -31,6 +31,8 @@ function ruby_prompt_position {
     if [[ ${HOME} == ${PWD} ]]
     then (( path_size = ${#PWD} - ${#HOME} + 1 ))
     elif [[ ${HOME} ==  ${PWD:0:${#HOME}} ]]
+    # if PWD:0 does not work replace with the following
+    # elif [[ ${PWD} != ${PWD##/home/<user>/} ]]
     then (( path_size = ${#PWD} - ${#HOME} + 1 ))
     else
         (( path_size = ${#PWD}  ))
