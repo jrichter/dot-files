@@ -35,8 +35,16 @@ ZSH_THEME="justin"
 alias grep='grep --color=auto'
 alias ll='ls -l'
 alias l='ls -al'
+alias l.='ls -d .[^.]*'
+alias cd..='cd ..'
+alias ..='cd ..'
 alias gs='git status'
+alias df="df -hT"
 alias goodnight='sudo pm-suspend'
+
+
+# Functions
+mdc() { mkdir -p "$1" && cd "$1" } # from _why's dotfile http://dotfiles.org/~_why/.zshrc
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
