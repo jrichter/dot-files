@@ -1,0 +1,75 @@
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 1
+        color_good = "#8ed4e1"
+        color_bad  = "#ff2514"
+        color_degraded = "#ffb714"
+}
+
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
+order += "disk /home"
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "battery 0"
+order += "load"
+order += "volume master"
+order += "tztime chicago"
+
+cpu_temperature 0 {
+        format = "ᖬ %degrees °C"
+    max_threshold = 65
+        path = "/sys/devices/platform/coretemp.0/temp2_input"
+}
+
+cpu_temperature 1 {
+        format = "ᖭ %degrees °C"
+    max_threshold = 65
+        path = "/sys/devices/platform/coretemp.0/temp3_input"
+}
+
+wireless wlan0 {
+        format_up = "⦖(%quality at %essid, %bitrate) %ip"
+        format_down = "⦖down"
+}
+
+ethernet eth0 {
+        # if you use %speed, i3status requires the cap_net_admin capability
+        format_up = "౽ %ip (%speed)"
+        format_down = "౽ down"
+}
+
+battery 0 {
+        format = "⚡ %status %percentage (%consumption)"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+        pidfile = "/var/run/vpnc/pid"
+}
+
+tztime chicago {
+        format = "%h %d, %Y %I:%M %p %Z"
+        timezone = "America/Chicago"
+}
+
+load {
+        format = "☊ %5min"
+}
+
+disk "/home" {
+        format = "⛁ %free Free on Home"
+}
+
+volume master {
+        format = "♪ %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}

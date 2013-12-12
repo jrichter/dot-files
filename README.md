@@ -1,7 +1,14 @@
 dot-files
 =========
 
-Some random dot files
+I got this idea here: http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
 
+Install GNU Stow.
 
-Just ln -s ~/dot-files/filename ~/filename or other directory and your all set!
+cd to dot-files directory.
+
+run: stow <dirname>
+
+GNU Stow will automagically link the files to their correlated
+directories.  Awesome.
+
