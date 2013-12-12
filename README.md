@@ -7,7 +7,7 @@ Install GNU Stow.
 
 cd to dot-files directory.
 
-run: stow <dirname>
+run: stow *dirname*
 
 GNU Stow will automagically link the files to their correlated
 directories.  Awesome.
