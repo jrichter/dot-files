@@ -1,0 +1,9 @@
+[submodule "emacs/.emacs.d/evil"]
+	path = emacs/.emacs.d/evil
+	url = git://gitorious.org/evil/evil.git
+[submodule "emacs/.emacs.d/undo-tree"]
+	path = emacs/.emacs.d/undo-tree
+	url = https://github.com/emacsmirror/undo-tree.git
+[submodule "emacs/.emacs.d/emacs-color-theme-solarized"]
+	path = emacs/.emacs.d/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
