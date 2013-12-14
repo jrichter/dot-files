@@ -1,4 +1,4 @@
-;;; Load undo-tree
+;; Load undo-tree
 (add-to-list 'load-path "~/.emacs.d/undo-tree")
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -30,21 +30,17 @@
                         helm
                         projectile
                         sr-speedbar
-                        color-theme-sanityinc-solarized
                         fill-column-indicator
                         auto-complete
                         js2-mode
                         js2-refactor
                         lua-mode
-                        flymake-python-pyflakes
-                        flymake-ruby
-                        flymake-lua
-                        flymake-haml
-                        flymake-json
-                        flymake-css
-                        flymake-sass
-                        flymake-jslint
+                        haml-mode
+                        less-css-mode
+                        coffee-mode
+                        flycheck
                         robe
+                        inf-ruby
                         ))
   (dolist (p my-packages)
     (when (not (package-installed-p p))
@@ -76,6 +72,12 @@
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 (global-auto-complete-mode)
 
+;; rvm
+(add-to-list 'load-path "~/.emacs.d/rvm")
+(require 'rvm)
+(add-hook 'ruby-mode-hook
+          (lambda () (rvm-activate-corresponding-ruby)))
+
 ;; Ruby - robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook
@@ -83,17 +85,11 @@
             (add-to-list 'ac-sources 'ac-source-robe)
             (setq completion-at-point-functions '(auto-complete))))
 
-;; load some js2-mode defaults from magnars
-(eval-after-load 'js2-mode '(require 'setup-js2-mode))
-(eval-after-load 'html-mode '(require 'setup-html-mode))
-
-;; flymake ruby
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
-;; flymake lua
-(require 'flymake-lua)
-(add-hook 'ruby-mode-hook 'flymake-lua-load)
+;; flycheck - syntax checker for multiple languages
+;; for ruby, make sure to install ruby-lint in the global gemset for each version
+;; for coffeescript, make sure to install coffeelint, npm install -g coffeelint
+(add-hook 'after-init-hook 'global-flycheck-mode)
+(add-hook 'ruby-mode-hook 'flycheck-mode)
 
 ;; Show line at 90 char
 (require 'fill-column-indicator)
@@ -121,12 +117,14 @@
           'append)
 
 ;; Don't put backups in current directory
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `((".*" . "~/.saves")))
 (setq backup-by-copying t) ;; set how emacs backs up
 (setq delete-old-versions t
   kept-new-versions 6
   kept-old-versions 2
   version-control t) ;; let it be versioned!
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.saves" t)))
 
 ;; Change the newline-mark 'paragraph mark' to the paragraph symbol
 (setq whitespace-display-mappings '((newline-mark 10 [182 10])))
@@ -146,6 +144,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; disable those annoying tooltips
+(tooltip-mode -1)
+
 ;; default font Hermit for Powerline
 (set-face-attribute 'default nil :font "Hermit for Powerline")
 
@@ -163,9 +164,6 @@
 
 ;; turn on line numbers
 (global-linum-mode t)
-
-;; disable those annoying tooltips
-(tooltip-mode -1)
 
 ;; Turn on winner mode
 (winner-mode t)

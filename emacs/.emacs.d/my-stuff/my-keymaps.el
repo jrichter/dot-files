@@ -12,10 +12,12 @@
 (define-key evil-normal-state-map ",b" 'helm-buffers-list)
 
 (define-key evil-normal-state-map ",r" 'helm-mini)
+(define-key evil-normal-state-map ",f" 'helm-find-files)
 (define-key evil-normal-state-map ",P" 'projectile-find-file)
 (define-key evil-normal-state-map ",p" 'sr-speedbar-toggle)
 
 (define-key evil-normal-state-map ",q" 'delete-window)
+(define-key evil-normal-state-map ",Q" 'kill-buffer)
 (define-key evil-normal-state-map ",o" 'delete-other-windows)
 (define-key evil-normal-state-map ",,o" 'winner-undo)
 (define-key evil-normal-state-map ",,O" 'winner-redo)

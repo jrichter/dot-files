@@ -10,3 +10,6 @@
 [submodule "emacs/.emacs.d/ace-jump-mode"]
 	path = emacs/.emacs.d/ace-jump-mode
 	url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "emacs/.emacs.d/rvm"]
+	path = emacs/.emacs.d/rvm
+	url = https://github.com/senny/rvm.el.git
