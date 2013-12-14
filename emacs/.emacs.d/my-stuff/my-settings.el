@@ -1,4 +1,22 @@
-;; load emacs 24's package system. Add MELPA repository.
+;;; Load undo-tree
+(add-to-list 'load-path "~/.emacs.d/undo-tree")
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+;; Load evil-mode
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+
+;; Load ace-jump-mode
+(add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+
+; load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives
@@ -11,6 +29,7 @@
   (defvar my-packages '(flx-ido
                         helm
                         projectile
+                        sr-speedbar
                         color-theme-sanityinc-solarized
                         fill-column-indicator
                         auto-complete
@@ -38,6 +57,17 @@
 
 ;; Projectile Mode
 (projectile-global-mode)
+
+;; sr-speedbar stuff
+(setq speedbar-hide-button-brackets-flag t
+      speedbar-show-unknown-files t
+      speedbar-smart-directory-expand-flag t
+      speedbar-use-images nil
+      speedbar-indentation-width 2
+      speedbar-update-flag t
+      sr-speedbar-auto-refresh t
+      sr-speedbar-skip-other-window-p t
+      sr-speedbar-right-side nil)
 
 ;; Auto complete mode
 (require 'auto-complete)
@@ -68,7 +98,7 @@
 (require 'fill-column-indicator)
 (setq-default fill-column 90)
 (setq-default fci-rule-width 1)
-(setq-default fci-rule-color "#686868")
+(setq-default fci-rule-color "#859900")
 (add-hook 'ruby-mode-hook 'fci-mode)
 (add-hook 'js-mode-hook 'fci-mode)
 (add-hook 'js2-mode-hook 'fci-mode)
@@ -83,16 +113,6 @@
 
 ;; Tune emacs garbage collector
 (setq gc-cons-threshold 20000000)
-
-;; Load undo-tree
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
-(require 'undo-tree)
-(global-undo-tree-mode)
-
-;; Load evil-mode
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
 
 ;; Ask for confirmation before quitting Emacs
 (add-hook 'kill-emacs-query-functions
@@ -121,8 +141,15 @@
 ;; Hide welcome screen
 (setq inhibit-splash-screen t)
 
+;; Hide Menubar and Toolbar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
 ;; default font Hermit for Powerline
 (set-face-attribute 'default nil :font "Hermit for Powerline")
+
+;; sort colors in list-colors-display by hue
+(setq list-colors-sort 'hsv )
 
 ;; Set initial layout
 (if (string= system-name "justin-Studio-1537")
