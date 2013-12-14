@@ -61,6 +61,7 @@
 ;; sr-speedbar stuff
 (setq speedbar-hide-button-brackets-flag t
       speedbar-show-unknown-files t
+      speedbar-show-hidden-files t
       speedbar-smart-directory-expand-flag t
       speedbar-use-images nil
       speedbar-indentation-width 2
