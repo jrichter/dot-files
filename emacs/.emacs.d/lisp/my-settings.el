@@ -24,7 +24,7 @@
 (evil-leader/set-leader ",")
 
 (evil-mode 1)
-(evil-surround-mode 1)
+(global-evil-surround-mode 1)
 
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
@@ -68,9 +68,9 @@
 (setq gc-cons-threshold 20000000)
 
 ;; Ask for confirmation before quitting Emacs
-(add-hook 'kill-emacs-query-functions
-          (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
-          'append)
+;; (add-hook 'kill-emacs-query-functions
+          ;; (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
+          ;; 'append)
 
 ;; Remember last postion in files
 (setq save-place-file "~/.emacs.d/saveplace") ;; keep my ~/ clean

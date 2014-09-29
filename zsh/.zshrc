@@ -45,8 +45,9 @@ alias df="df -hT"
 alias goodnight='sudo pm-suspend'
 alias wifi_scan='sudo iwlist wlan0 scan'
 alias listen_to_wifi='sudo tcpdump -i wlan0 -n -w- | play --buffer 10000 -r 8000 -b 8 -c 1 -e signed-integer -t raw - band 2k'
-alias mv="mv -i"
-alias terminal="gnome-terminal"
+alias mv='mv -i'
+alias terminal='gnome-terminal'
+alias emacs='emacs -nw'
 
 # Functions
 mdc() { mkdir -p "$1" && cd "$1" } # from _why's dotfile http://dotfiles.org/~_why/.zshrc
