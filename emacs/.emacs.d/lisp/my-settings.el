@@ -1,5 +1,3 @@
-(require 'cl)
-
 ;; Set my defaults
 (setq user-full-name "Justin Richter")
 (setq user-login-name "justin")
@@ -10,6 +8,8 @@
 
 ;; Helm Mode
 (helm-mode 1)
+
+(set 'helm-ack-use-ack-grep t)
 
 ;; Projectile Mode
 (require 'projectile)
@@ -24,6 +24,7 @@
 (evil-leader/set-leader ",")
 
 (evil-mode 1)
+(evil-surround-mode 1)
 
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
@@ -49,6 +50,9 @@
   "Emacs quick move minor mode"
   t)
 
+;; Load company
+(add-hook 'after-init-hook 'global-company-mode)
+
 (add-hook 'ruby-mode-hook 'flycheck-mode)
 
 ;; Show line at 90 char
@@ -67,6 +71,11 @@
 (add-hook 'kill-emacs-query-functions
           (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
           'append)
+
+;; Remember last postion in files
+(setq save-place-file "~/.emacs.d/saveplace") ;; keep my ~/ clean
+(setq-default save-place t)                   ;; activate it for all buffers
+(require 'saveplace)                          ;; get the package
 
 ;; Don't put backups in current directory
 (setq backup-directory-alist `((".*" . "~/.saves")))

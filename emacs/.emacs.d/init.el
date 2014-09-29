@@ -1,3 +1,5 @@
+(require 'cl)
+
 (message "%s I'm booting up." (getenv "USER"))
 
 ;; set custom directories
@@ -22,12 +24,16 @@
   (package-refresh-contents))
 (defvar my-packages '(ace-jump-mode
                       color-theme-approximate
+                      company
+                      company-inf-ruby
                       diminish
                       elixir-mode
                       evil
                       evil-leader
                       evil-matchit
                       evil-nerd-commenter
+                      evil-numbers
+                      evil-surround
                       fill-column-indicator
                       flymake-ruby
                       flymake-lua
@@ -40,9 +46,12 @@
                       helm
                       helm-ack
                       helm-projectile
-                      powerline
+                      inf-ruby
                       powerline-evil
                       ruby-mode
+                      ruby-tools
+                      rubocop
+                      smartparens
                       smooth-scrolling
                       zenburn-theme
                       ))
