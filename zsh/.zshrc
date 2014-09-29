@@ -1,14 +1,14 @@
 # prompts
 if [[ $TERM == "dumb" ]]; then	# in emacs
-    PS1='$ '
     #PS1='%(?..[%?])%!:%~%# '
     # for tramp to not hang, need the following. cf:
     # http://www.emacswiki.org/emacs/TrampMode
     unsetopt zle
     unsetopt prompt_cr
     unsetopt prompt_subst
-#    unfunction precmd
-#    unfunction preexec
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
 else
 
 # Keep a log of all history in ~/.logs
@@ -32,10 +32,12 @@ ZSH_THEME="justin"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias inc='inc -form scan.default -file /home/justin/.mail -truncate'
 alias grep='grep --color=auto'
 alias ll='ls -l'
 alias l='ls -al'
 alias l.='ls -d .[^.]*'
+alias lg='ls --group-directories-first'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias gs='git status'
@@ -48,6 +50,46 @@ alias terminal="gnome-terminal"
 
 # Functions
 mdc() { mkdir -p "$1" && cd "$1" } # from _why's dotfile http://dotfiles.org/~_why/.zshrc
+
+# Search google via chrome from the command line
+# No qoutes needed:
+
+# IE: $ s my google search
+
+# Math functions are also available:
+
+# IE:
+# s 2 + 2
+# s 2 x 2
+# s 2 / 2
+# s 2 - 2
+
+s() {
+  searchquery=0
+  # Loop through our parameters and build the search query
+  for param in $@
+  do
+    if [ "$searchquery" = "0" ]
+    then
+      searchquery="$param"
+      # Perform as expected when query contains a "+"
+    elif [ "$param" = "+" ]
+    then
+      searchquery="$searchquery+%2B"
+    else
+      searchquery="$searchquery+$param"
+    fi
+  done
+  url="https://www.google.com/search?q=$searchquery"
+  # Check whether we're on OS X or Linux
+  if [ "`uname -a | grep -o Darwin | wc -l`" -gt "0" ]
+  then
+    open $url
+  else
+    firefox $url
+    # This could also be firefox, opera, whatever floats your boat.
+  fi
+}
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -74,11 +116,13 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export TERM=xterm-256color
 
+export EDITOR=/usr/bin/emacs
+
 # PATH=$PATH:$HOME/.rvm/bin       # Add RVM to PATH for scripting
 
 # export PATH=/home/justin/.rvm/gems/ruby-1.9.3-preview1@default/bin:/home/justin/.rvm/gems/ruby-1.9.3-preview1@global/bin:/home/justin/.rvm/rubies/ruby-1.9.3-preview1/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 
-export PATH=$PATH:/usr/local/heroku/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/usr/local/heroku/bin
+export PATH=$PATH:/usr/local/nmh/bin:/usr/local/heroku/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/usr/local/heroku/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 fi

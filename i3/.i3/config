@@ -172,6 +172,8 @@ for_window [class="Gnome-alsamixer"] floating enable
 
 # Custom Launcher
 bindsym $ms+g exec /usr/bin/google-chrome
+bindsym $ms+e exec /usr/local/bin/emacs
+bindsym $ms+a exec /usr/local/bin/atom
 bindsym $ms+f exec /usr/bin/firefox
 bindsym $ms+n exec /usr/bin/nemo --no-desktop
 bindsym $ms+F12 exec gksudo poweroff
@@ -185,8 +187,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 3%+
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
 # Startup applications
+exec --no-startup-id cinnamon-settings-daemon
 exec --no-startup-id feh --bg-scale /home/justin/.i3/wallpaper/TronLightCycle2.png
 exec --no-startup-id xmodmap ~/.xmodmaprc
 exec --no-startup-id numlockx
+exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id clipit
