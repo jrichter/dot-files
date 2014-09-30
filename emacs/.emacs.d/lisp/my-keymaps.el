@@ -1,3 +1,8 @@
+;; non-evil keymaps
+(global-set-key (kbd "C-c =") 'er/expand-region)
+(global-set-key (kbd "C-c /") 'ack-and-a-half)
+(global-set-key (kbd "C-c .") 'helm-ack)
+
 ;; obliterate unwanted emacs default key bindings.
 (define-key evil-normal-state-map (kbd "g /") nil)
 (define-key evil-normal-state-map (kbd "g w") nil)
@@ -27,15 +32,18 @@
   "r" 'helm-recentf
   "f" 'helm-find-files
   "p" 'projectile-find-file
+  "u" 'undo-tree-visualize
 
   "Q" 'kill-buffer
   "o" 'winner-undo
-  "O" 'winner-redo
+  "O" 'winner-redo)
 
-  " " 'ace-jump-mode)
+;; Normal Mode keymaps
+(define-key evil-normal-state-map " " 'evil-ace-jump-char-mode)
 
 ;; Visual Mode keymaps
 (define-key evil-visual-state-map "." 'eval-region)
+(define-key evil-visual-state-map "c" 'comment-or-uncomment-region)
 
 ;; Esc quits
 (defun minibuffer-keyboard-quit ()

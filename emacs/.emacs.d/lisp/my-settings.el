@@ -15,8 +15,16 @@
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-require-project-root nil)
-(setq projectile-completion-system 'grizzl)
 (setq projectile-enable-caching t)
+
+;; flx-ido flex matching
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 ;; Load evil-mode
 (setq evil-leader/in-all-states 1)
@@ -25,6 +33,16 @@
 
 (evil-mode 1)
 (global-evil-surround-mode 1)
+(setq-default evil-cross-lines t)
+
+;; ;; Powerline
+;; (require 'powerline)
+;; (powerline-evil-vim-color-theme)
+(display-time-mode t)
+
+;; Diminish keeps things clean
+(require 'diminish)
+(eval-after-load "Helm" '(diminish 'helm-mode))
 
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
@@ -43,7 +61,7 @@
 (setq recentf-max-menu-items 100)
 
 ;; Load ace-jump-mode
-(add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
+(require 'ace-jump-mode)
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -53,7 +71,12 @@
 ;; Load company
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Ruby stuff
 (add-hook 'ruby-mode-hook 'flycheck-mode)
+
+(require 'rvm)
+(rvm-use-default)
+(add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
 
 ;; Show line at 90 char
 (require 'fill-column-indicator)
@@ -93,11 +116,6 @@
 ;; Make C-n add newlines so I don't have to hit enter at the end of a
 ;; buffer
 (setq next-line-add-newlines t)
-
-;; Powerline
-(require 'powerline)
-(powerline-evil-vim-color-theme)
-(display-time-mode t)
 
 ;; Turn on dired-x
 (add-hook 'dired-load-hook
@@ -176,7 +194,7 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; nice scrolling
-(setq scroll-margin 0
+(setq scroll-margin 5
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
