@@ -2,6 +2,7 @@
 (global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "C-c /") 'ack-and-a-half)
 (global-set-key (kbd "C-c .") 'helm-ack)
+(global-set-key (kbd "C-c g s") 'magit-status)
 
 ;; obliterate unwanted emacs default key bindings.
 (define-key evil-normal-state-map (kbd "g /") nil)

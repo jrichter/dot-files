@@ -49,7 +49,7 @@ alias mv='mv -i'
 alias terminal='gnome-terminal'
 alias emacs='emacsclient -t'
 alias eserver='/usr/bin/emacs --daemon'
-alias enw='/usr/bin/emacs -nw'
+alias enw='/usr/bin/emacs -n
 
 # Functions
 mdc() { mkdir -p "$1" && cd "$1" } # from _why's dotfile http://dotfiles.org/~_why/.zshrc
