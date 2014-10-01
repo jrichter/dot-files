@@ -18,10 +18,10 @@
 
 ;; Load packages not installed
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
                          ("org" . "http://orgmode.org/elpa/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -58,7 +58,7 @@
                       ruby-mode
                       ruby-tools
                       rubocop
-                      rvm
+                      ;; rvm install from git instead
                       smartparens
                       ;; smooth-scrolling
                       zenburn-theme

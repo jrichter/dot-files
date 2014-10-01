@@ -13,3 +13,6 @@
 [submodule "emacs/.emacs.d/rvm"]
 	path = emacs/.emacs.d/rvm
 	url = https://github.com/senny/rvm.el.git
+[submodule "emacs/.emacs.d/from-git/rvm.el"]
+	path = emacs/.emacs.d/from-git/rvm.el
+	url = https://github.com/senny/rvm.el.git

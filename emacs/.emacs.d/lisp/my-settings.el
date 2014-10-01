@@ -78,14 +78,14 @@
 (rvm-use-default)
 (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
 
-;; Show line at 90 char
-(require 'fill-column-indicator)
-(setq-default fill-column 90)
-(setq-default fci-rule-width 1)
-(setq-default fci-rule-color "#859900")
-(add-hook 'ruby-mode-hook 'fci-mode)
-(add-hook 'clojure-mode-hook 'fci-mode)
-(add-hook 'markdown-mode-hook 'fci-mode)
+;; ;; Show line at 90 char
+;; (require 'fill-column-indicator)
+;; (setq-default fill-column 90)
+;; (setq-default fci-rule-width 1)
+;; (setq-default fci-rule-color "#859900")
+;; (add-hook 'ruby-mode-hook 'fci-mode)
+;; (add-hook 'clojure-mode-hook 'fci-mode)
+;; (add-hook 'markdown-mode-hook 'fci-mode)
 
 ;; Tune emacs garbage collector
 (setq gc-cons-threshold 20000000)
@@ -109,6 +109,12 @@
   version-control t) ;; let it be versioned!
 (setq auto-save-file-name-transforms
       `((".*" ,"~/.saves" t)))
+
+; Undo/Redo
+(require 'undo-tree)
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '((".*" . "~/saves/emacs-undo")))
 
 ;; Change the newline-mark 'paragraph mark' to the paragraph symbol
 (setq whitespace-display-mappings '((newline-mark 10 [182 10])))
@@ -134,7 +140,7 @@
 
 ;; default font Hermit for Powerline
 (when (display-graphic-p)
-  (set-face-attribute 'default nil :font "Hermit for Powerline Medium"))
+  (set-face-attribute 'default nil :font "Anonymous Pro"))
 
 ;; sort colors in list-colors-display by hue
 (setq list-colors-sort 'hsv )
@@ -183,7 +189,6 @@
 (defadvice split-window (after move-point-to-new-window activate)
   "Moves the point to the newly created window after splitting."
   (other-window 1))
-
 
 ;; majority of code formatting conventions do not recommend mixed tabs and spaces. So, here.
 (setq-default indent-tabs-mode nil)     ; emacs 23.1 default is t

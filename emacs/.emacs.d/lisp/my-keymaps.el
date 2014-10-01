@@ -36,7 +36,8 @@
 
   "Q" 'kill-buffer
   "o" 'winner-undo
-  "O" 'winner-redo)
+  "O" 'winner-redo
+  ";" 'helm-show-kill-ring)
 
 ;; Normal Mode keymaps
 (define-key evil-normal-state-map " " 'evil-ace-jump-char-mode)
