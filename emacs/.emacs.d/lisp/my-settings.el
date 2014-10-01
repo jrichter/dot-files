@@ -73,6 +73,7 @@
 
 ;; Ruby stuff
 (add-hook 'ruby-mode-hook 'flycheck-mode)
+(add-hook 'ruby-mode-hook 'rubocop-mode)
 
 (require 'rvm)
 (rvm-use-default)
@@ -114,7 +115,7 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist '((".*" . "~/saves/emacs-undo")))
+(setq undo-tree-history-directory-alist '((".*" . "~/.saves/emacs-undo")))
 
 ;; Change the newline-mark 'paragraph mark' to the paragraph symbol
 (setq whitespace-display-mappings '((newline-mark 10 [182 10])))

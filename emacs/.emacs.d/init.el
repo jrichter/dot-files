@@ -66,6 +66,7 @@
                       helm-ack
                       helm-projectile
                       inf-ruby
+                      magit
                       markdown-mode
                       powerline-evil
                       ruby-mode
