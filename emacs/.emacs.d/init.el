@@ -12,9 +12,22 @@
   "My lisp files.")
 (defvar custom-dir (expand-file-name "custom" my-emacs-dir)
   "Location of custom.el")
+(defvar from-git-dir (expand-file-name "from-git" my-emacs-dir)
+  "Location of files from git")
 
+(defun add-git-subfolders-to-load-path (parent-dir)
+ "Add all level PARENT-DIR subdirs to the `load-path'."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+                (not (string-prefix-p "." f)))
+       (add-to-list 'load-path name)
+       (add-git-subfolders-to-load-path name)))))
+
+;; add directories to Emacs's `load-path'
 (add-to-list 'load-path lisp-dir)
 (add-to-list 'load-path custom-dir)
+(add-git-subfolders-to-load-path from-git-dir)
 
 ;; Load packages not installed
 (require 'package)
