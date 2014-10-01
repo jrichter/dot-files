@@ -31,7 +31,7 @@
 
   "r" 'helm-recentf
   "f" 'helm-find-files
-  "p" 'projectile-find-file
+  "p" 'helm-projectile
   "u" 'undo-tree-visualize
 
   "Q" 'kill-buffer
