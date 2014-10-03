@@ -227,4 +227,15 @@
 ;; use zenburn as the default theme
 (load-theme 'zenburn t)
 
+;; show env var named path
+(getenv "PATH")
+;; example of setting env var named “path”
+;; by prepending new paths to existing paths
+(setenv "PATH"
+        (concat
+         "/usr/local/nmh/bin" ":"
+         (getenv "PATH") ; inherited from OS
+         )
+        )
+
 (provide 'my-settings)
