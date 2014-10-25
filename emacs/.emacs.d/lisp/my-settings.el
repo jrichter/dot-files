@@ -2,6 +2,11 @@
 (setq user-full-name "Justin Richter")
 (setq user-login-name "justin")
 (setq user-mail-address "jrichter@jetfive.com")
+(setq erc-nick "jrichter") ;; ERC login
+
+;; ERC
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+;; (erc-scrolltobottom-mode t)
 
 ;; Allow emacs to translate colors to the best terminal match
 (color-theme-approximate-on)
@@ -157,6 +162,7 @@
 
 ;; turn on line numbers
 (global-linum-mode t)
+;; (nlinum-mode t)
 
 ;; Turn on winner mode
 (winner-mode t)
@@ -237,5 +243,11 @@
          (getenv "PATH") ; inherited from OS
          )
         )
+;; enable mouse support
+(xterm-mouse-mode)
+
+;; simpleclip-mode
+(require 'simpleclip)
+(simpleclip-mode 1)
 
 (provide 'my-settings)
