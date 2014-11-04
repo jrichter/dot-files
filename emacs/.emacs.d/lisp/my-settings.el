@@ -2,10 +2,12 @@
 (setq user-full-name "Justin Richter")
 (setq user-login-name "justin")
 (setq user-mail-address "jrichter@jetfive.com")
-(setq erc-nick "jrichter") ;; ERC login
 
 ;; ERC
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-nick "jrichter") ;; ERC login
+(setq erc-hide-list '("JOIN" "PART" "QUIT")) ;; Ignore these messages
+(setq erc-autojoin-channels-alist '(("freenode.net" "#church.io"))) ;; strings seperated by spaces
+
 ;; (erc-scrolltobottom-mode t)
 
 ;; Allow emacs to translate colors to the best terminal match

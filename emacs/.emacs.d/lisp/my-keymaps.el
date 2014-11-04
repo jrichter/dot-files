@@ -5,6 +5,9 @@
 (global-set-key (kbd "C-c g s") 'magit-status)
 (global-set-key (kbd "C-c q") 'delete-frame)
 
+(require 'bible-verse)
+(global-set-key (kbd "C-c b") 'bible-verse)
+
 ;; obliterate unwanted emacs default key bindings.
 (define-key evil-normal-state-map (kbd "g /") nil)
 (define-key evil-normal-state-map (kbd "g w") nil)

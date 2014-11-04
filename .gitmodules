@@ -1,3 +1,6 @@
 [submodule "emacs/.emacs.d/from-git/rvm.el"]
         path = emacs/.emacs.d/from-git/rvm.el
         url = https://github.com/senny/rvm.el.git
+[submodule "emacs/.emacs.d/from-git/bible-verse.el"]
+	path = emacs/.emacs.d/from-git/bible-verse.el
+	url = https://github.com/jrichter/bible-verse.el
