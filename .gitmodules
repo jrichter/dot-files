@@ -4,3 +4,6 @@
 [submodule "emacs/.emacs.d/from-git/bible-verse.el"]
 	path = emacs/.emacs.d/from-git/bible-verse.el
 	url = https://github.com/jrichter/bible-verse.el
+[submodule "emacs/.emacs.d/from-git/s.el"]
+	path = emacs/.emacs.d/from-git/s.el
+	url = https://github.com/magnars/s.el.git
