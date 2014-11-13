@@ -252,4 +252,7 @@
 (require 'simpleclip)
 (simpleclip-mode 1)
 
+;; Enable final newline
+(setq require-final-newline t)
+
 (provide 'my-settings)
