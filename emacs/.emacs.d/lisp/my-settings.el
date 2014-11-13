@@ -148,7 +148,7 @@
 
 ;; default font Hermit for Powerline
 (when (display-graphic-p)
-  (set-face-attribute 'default nil :font "Consolas"))
+  (set-face-attribute 'default nil :font "Anonymous Pro"))
 
 ;; sort colors in list-colors-display by hue
 (setq list-colors-sort 'hsv )
