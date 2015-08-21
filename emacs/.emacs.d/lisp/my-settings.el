@@ -3,6 +3,13 @@
 (setq user-login-name "justin")
 (setq user-mail-address "jrichter@jetfive.com")
 
+;; ERC
+(setq erc-nick "jrichter") ;; ERC login
+(setq erc-hide-list '("JOIN" "PART" "QUIT")) ;; Ignore these messages
+(setq erc-autojoin-channels-alist '(("freenode.net" "#church.io"))) ;; strings seperated by spaces
+
+;; (erc-scrolltobottom-mode t)
+
 ;; Allow emacs to translate colors to the best terminal match
 (color-theme-approximate-on)
 
@@ -157,6 +164,7 @@
 
 ;; turn on line numbers
 (global-linum-mode t)
+;; (nlinum-mode t)
 
 ;; Turn on winner mode
 (winner-mode t)
@@ -237,5 +245,14 @@
          (getenv "PATH") ; inherited from OS
          )
         )
+;; enable mouse support
+(xterm-mouse-mode)
+
+;; simpleclip-mode
+(require 'simpleclip)
+(simpleclip-mode 1)
+
+;; Enable final newline
+(setq require-final-newline t)
 
 (provide 'my-settings)

@@ -68,11 +68,13 @@
                       inf-ruby
                       magit
                       markdown-mode
+                      ;; nlinum
                       powerline-evil
                       ruby-mode
                       ruby-tools
                       rubocop
                       ;; rvm install from git instead
+                      simpleclip
                       smartparens
                       ;; smooth-scrolling
                       zenburn-theme

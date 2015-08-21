@@ -5,6 +5,9 @@
 (global-set-key (kbd "C-c g s") 'magit-status)
 (global-set-key (kbd "C-c q") 'delete-frame)
 
+(require 'bible-verse)
+(global-set-key (kbd "C-c b") 'bible-verse)
+
 ;; obliterate unwanted emacs default key bindings.
 (define-key evil-normal-state-map (kbd "g /") nil)
 (define-key evil-normal-state-map (kbd "g w") nil)
@@ -43,6 +46,21 @@
 
 ;; Normal Mode keymaps
 (define-key evil-normal-state-map " " 'evil-ace-jump-char-mode)
+
+;; Magit
+(evil-set-initial-state 'magit-mode 'normal)
+(evil-set-initial-state 'magit-status-mode 'normal)
+(evil-set-initial-state 'magit-diff-mode 'normal)
+(evil-set-initial-state 'magit-log-mode 'normal)
+(evil-define-key 'normal magit-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-log-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-diff-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
 
 ;; Visual Mode keymaps
 (define-key evil-visual-state-map "." 'eval-region)
