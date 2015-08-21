@@ -49,7 +49,7 @@ esac
 #Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
 # Screenshot: http://img.gf3.ca/d54942f474256ec26a49893681c49b5a.png
 # A big thanks to \amethyst on Freenode
- 
+
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then TERM=gnome-256color; fi
 if tput setaf 1 &> /dev/null; then
   tput sgr0
@@ -77,14 +77,14 @@ else
   BOLD=""
   RESET="\033[m"
 fi
- 
+
 parse_git_dirty () {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
 parse_git_branch () {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
- 
+
 PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -101,4 +101,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # mint-fortune
-/usr/bin/mint-fortune
+/usr/games/fortune
+
+export TZ="/usr/share/zoneinfo/America/Chicago"
