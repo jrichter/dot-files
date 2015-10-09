@@ -36,7 +36,7 @@
 ;; Load evil-mode
 (setq evil-leader/in-all-states 1)
 (global-evil-leader-mode)
-(evil-leader/set-leader ",")
+(evil-leader/set-leader "<SPC>")
 
 (evil-mode 1)
 (global-evil-surround-mode 1)
@@ -148,7 +148,7 @@
 
 ;; default font Hermit for Powerline
 (when (display-graphic-p)
-  (set-face-attribute 'default nil :font "Anonymous Pro"))
+  (set-face-attribute 'default nil :font "Consolas"))
 
 ;; sort colors in list-colors-display by hue
 (setq list-colors-sort 'hsv )
@@ -254,5 +254,21 @@
 
 ;; Enable final newline
 (setq require-final-newline t)
+
+;; which-key
+(require 'which-key)
+(which-key-mode)
+(which-key-setup-minibuffer)
+
+;; web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (provide 'my-settings)

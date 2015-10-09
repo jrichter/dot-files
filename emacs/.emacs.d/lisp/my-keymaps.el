@@ -17,6 +17,8 @@
 (global-unset-key (kbd "M-v"))
 (global-unset-key (kbd "C-l"))
 
+
+
 (evil-leader/set-key
   "v" 'evil-window-vsplit
   "s" 'evil-window-split

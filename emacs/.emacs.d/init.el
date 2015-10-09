@@ -77,6 +77,8 @@
                       simpleclip
                       smartparens
                       ;; smooth-scrolling
+                      web-mode
+                      which-key
                       zenburn-theme
                       ))
 (dolist (p my-packages)
