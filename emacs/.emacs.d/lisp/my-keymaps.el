@@ -17,8 +17,6 @@
 (global-unset-key (kbd "M-v"))
 (global-unset-key (kbd "C-l"))
 
-
-
 (evil-leader/set-key
   "v" 'evil-window-vsplit
   "s" 'evil-window-split
@@ -41,13 +39,15 @@
   "p" 'helm-projectile
   "u" 'undo-tree-visualize
 
+  "<SPC>" 'evil-ace-jump-char-mode
+
   "Q" 'kill-buffer
   "o" 'winner-undo
   "O" 'winner-redo
   ";" 'helm-show-kill-ring)
 
 ;; Normal Mode keymaps
-(define-key evil-normal-state-map " " 'evil-ace-jump-char-mode)
+;;(define-key evil-normal-state-map " " 'some-package)
 
 ;; Magit
 (evil-set-initial-state 'magit-mode 'normal)
