@@ -125,7 +125,7 @@ export EDITOR=/usr/bin/emacs
 
 # export PATH=/home/justin/.rvm/gems/ruby-1.9.3-preview1@default/bin:/home/justin/.rvm/gems/ruby-1.9.3-preview1@global/bin:/home/justin/.rvm/rubies/ruby-1.9.3-preview1/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 
-export PATH=$PATH:/usr/local/nmh/bin:/usr/local/heroku/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/usr/local/heroku/bin
+export PATH=$PATH:/usr/local/nmh/bin:/usr/local/heroku/bin:/home/justin/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/usr/local/heroku/bin:$HOME/.cabal
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 fi
