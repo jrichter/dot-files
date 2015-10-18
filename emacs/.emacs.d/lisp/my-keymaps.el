@@ -60,8 +60,10 @@
   "p" 'magit-push
   "c" 'magit-commit
   "d" 'magit-diff
+  "D" 'magit-diff-working-tree
   "u" 'magit-unstage-item
   "U" 'magit-unstage-all
+  "r" 'magit-refresh-all
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section)
 (evil-define-key 'normal magit-log-mode-map
