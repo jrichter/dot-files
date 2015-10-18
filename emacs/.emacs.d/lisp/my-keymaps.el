@@ -55,6 +55,10 @@
 (evil-set-initial-state 'magit-diff-mode 'normal)
 (evil-set-initial-state 'magit-log-mode 'normal)
 (evil-define-key 'normal magit-mode-map
+  "s" 'magit-stage-item
+  "S" 'magit-stage-all
+  "p" 'magit-push
+  "c" 'magit-commit
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section)
 (evil-define-key 'normal magit-log-mode-map

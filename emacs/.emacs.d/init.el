@@ -45,6 +45,7 @@
                       company-inf-ruby
                       diminish
                       elixir-mode
+                      enh-ruby-mode
                       expand-region
                       evil
                       evil-leader
