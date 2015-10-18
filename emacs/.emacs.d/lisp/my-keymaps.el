@@ -61,9 +61,17 @@
   "c" 'magit-commit
   "d" 'magit-diff
   "D" 'magit-diff-working-tree
+  "l" 'magit-log-mode
   "u" 'magit-unstage-item
   "U" 'magit-unstage-all
   "r" 'magit-refresh-all
+  "q" 'magit-mode-quit-window
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-process-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+(evil-define-key 'normal magit-commit-mode-map
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section)
 (evil-define-key 'normal magit-log-mode-map
