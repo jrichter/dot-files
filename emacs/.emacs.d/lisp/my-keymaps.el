@@ -35,9 +35,11 @@
   "b" 'helm-mini
 
   "r" 'helm-recentf
-  "f" 'helm-find-files
-  "p" 'helm-projectile
+  "F" 'helm-find-files
+  "f" 'helm-projectile
   "u" 'undo-tree-visualize
+
+  "gs" 'magit-status
 
   "<SPC>" 'evil-ace-jump-char-mode
 
@@ -80,6 +82,9 @@
 (evil-define-key 'normal magit-diff-mode-map
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section)
+
+;; Packages
+(evil-set-initial-state 'package-menu-mode 'normal)
 
 ;; Visual Mode keymaps
 (define-key evil-visual-state-map "." 'eval-region)
