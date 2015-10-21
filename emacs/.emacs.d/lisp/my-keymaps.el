@@ -85,6 +85,11 @@
 
 ;; Packages
 (evil-set-initial-state 'package-menu-mode 'normal)
+(evil-define-key 'normal package-menu-mode-map
+  "i" 'package-menu-mark-install
+  "d" 'package-menu-mark-delete
+  "u" 'package-menu-mark-unmark
+  "U" 'package-menu-mark-upgrades)
 
 ;; Visual Mode keymaps
 (define-key evil-visual-state-map "." 'eval-region)
