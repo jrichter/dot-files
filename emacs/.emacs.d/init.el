@@ -70,6 +70,10 @@
                       magit
                       markdown-mode
                       ;; nlinum
+                      php-completion
+                      php-extras
+                      php-mode
+                      php-refactor-mode
                       powerline-evil
                       ruby-mode
                       ruby-tools
