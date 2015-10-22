@@ -89,7 +89,8 @@
   "i" 'package-menu-mark-install
   "d" 'package-menu-mark-delete
   "u" 'package-menu-mark-unmark
-  "U" 'package-menu-mark-upgrades)
+  "U" 'package-menu-mark-upgrades
+  "x" 'package-menu-execute)
 
 ;; Visual Mode keymaps
 (define-key evil-visual-state-map "." 'eval-region)

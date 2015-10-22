@@ -55,11 +55,12 @@
                       evil-surround
                       fill-column-indicator
                       flycheck
-                      flymake-ruby
-                      flymake-lua
+                      flymake-css
                       flymake-haml
                       flymake-json
-                      flymake-css
+                      flymake-lua
+                      flymake-php
+                      flymake-ruby
                       flymake-sass
                       flx-ido
                       haml-mode
