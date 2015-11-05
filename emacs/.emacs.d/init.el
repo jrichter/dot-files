@@ -62,6 +62,7 @@
                       flymake-php
                       flymake-ruby
                       flymake-sass
+                      flymake-yaml
                       flx-ido
                       haml-mode
                       helm
@@ -83,8 +84,10 @@
                       simpleclip
                       smartparens
                       ;; smooth-scrolling
+                      tagedit
                       web-mode
                       which-key
+                      yaml-mode
                       zenburn-theme
                       ))
 (dolist (p my-packages)
