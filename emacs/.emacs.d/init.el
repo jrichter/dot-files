@@ -31,15 +31,15 @@
 
 ;; Load packages not installed
 (require 'package)
+(setq package-check-signature nil)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
                          ("org" . "http://orgmode.org/elpa/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                        ;; ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 (defvar my-packages '(ace-jump-mode
-                      ack-and-a-half
                       color-theme-approximate
                       company
                       company-inf-ruby
@@ -71,20 +71,15 @@
                       inf-ruby
                       magit
                       markdown-mode
-                      ;; nlinum
-                      php-completion
-                      php-extras
                       php-mode
                       php-refactor-mode
                       powerline-evil
+                      request
                       ruby-mode
                       ruby-tools
                       rubocop
-                      ;; rvm install from git instead
                       simpleclip
                       smartparens
-                      ;; smooth-scrolling
-                      tagedit
                       web-mode
                       which-key
                       yaml-mode
