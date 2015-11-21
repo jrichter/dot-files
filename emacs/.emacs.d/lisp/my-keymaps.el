@@ -33,20 +33,25 @@
   "." 'next-buffer
   "/" 'previous-buffer
   "b" 'helm-mini
+  "<SPC>" 'helm-show-kill-ring
+
+  "cc" 'org-capture
+  "cl" 'org-store-link
+  "ca" 'org-agenda
 
   "r" 'helm-recentf
   "F" 'helm-find-files
   "f" 'helm-projectile
+  "p" 'helm-projectile-switch-project
   "u" 'undo-tree-visualize
 
   "gs" 'magit-status
 
-  "<SPC>" 'evil-ace-jump-char-mode
+  "," 'evil-ace-jump-char-mode
 
   "Q" 'kill-buffer
   "o" 'winner-undo
-  "O" 'winner-redo
-  ";" 'helm-show-kill-ring)
+  "O" 'winner-redo)
 
 ;; Normal Mode keymaps
 ;;(define-key evil-normal-state-map " " 'some-package)

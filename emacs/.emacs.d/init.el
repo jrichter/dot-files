@@ -69,6 +69,7 @@
                       helm-ack
                       helm-projectile
                       inf-ruby
+                      latex-preview-pane
                       magit
                       markdown-mode
                       php-mode

@@ -79,8 +79,29 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Ruby stuff
+;; (add-hook 'ruby-mode-hook 'flycheck-mode)
+;; (add-hook 'ruby-mode-hook 'rubocop-mode)
+
+(require 'flycheck)
+(add-hook 'after-init-hook 'global-flycheck-mode)
+
+;; Ruby
 (add-hook 'ruby-mode-hook 'flycheck-mode)
-(add-hook 'ruby-mode-hook 'rubocop-mode)
+(add-hook 'ruby-mode-hook 'enh-ruby-mode)
+(flycheck-define-checker ruby-rubocop
+  "A Ruby syntax and style checker using the RuboCop tool."
+  :command ("rubocop" "--format" "emacs"
+            (config-file "--config" flycheck-rubocoprc)
+            source)
+  :error-patterns
+  ((warning line-start
+            (file-name) ":" line ":" column ": " (or "C" "W") ": " (message)
+            line-end)
+   (error line-start
+          (file-name) ":" line ":" column ": " (or "E" "F") ": " (message)
+          line-end))
+   :modes (enh-ruby-mode))
+
 
 (require 'rvm)
 (rvm-use-default)
@@ -146,7 +167,7 @@
 ;; disable those annoying tooltips
 (tooltip-mode -1)
 
-;; default font Hermit for Powerline
+;; default font
 (when (display-graphic-p)
   (set-face-attribute 'default nil :font "Consolas"))
 
@@ -163,7 +184,7 @@
 (fringe-mode (cons 8 4))
 
 ;; turn on line numbers
-(global-linum-mode t)
+;; (global-linum-mode t)
 ;; (nlinum-mode t)
 
 ;; Turn on winner mode
@@ -248,6 +269,29 @@
 ;; enable mouse support
 (xterm-mouse-mode)
 
+;;;  Jonas.Jarnestrom<at>ki.ericsson.se A smarter
+;;;  find-tag that automagically reruns etags when it cant find a
+;;;  requested item and then makes a new try to locate it.
+;;;  Fri Mar 15 09:52:14 2002
+(defadvice find-tag (around refresh-etags activate)
+  "Rerun etags and reload tags if tag not found and redo find-tag.
+   If buffer is modified, ask about save before running etags."
+  (let ((extension (file-name-extension (buffer-file-name))))
+    (condition-case err
+        ad-do-it
+      (error (and (buffer-modified-p)
+                  (not (ding))
+                  (y-or-n-p "Buffer is modified, save it? ")
+                  (save-buffer))
+             (er-refresh-etags extension)
+             ad-do-it))))
+(defun er-refresh-etags (&optional extension)
+  "Run etags on all peer files in current dir and reload them silently."
+  (interactive)
+  (shell-command (format "etags *.%s" (or extension "el")))
+  (let ((tags-revert-without-query t))  ; don't query, revert silently
+    (visit-tags-table default-directory nil)))
+
 ;; simpleclip-mode
 (require 'simpleclip)
 (simpleclip-mode 1)
@@ -270,5 +314,26 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; Org Mode
+(setq org-directory "~/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;; Setup some templates
+(setq org-capture-templates
+      (quote (("t" "Todo" entry (file+headline (concat org-directory "/notes.org") "Tasks")
+               "* TODO %?\n  %i\n %t\n  %a")
+              ("n" "note" entry (file (concat org-directory "/notes.org"))
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("j" "Journal" entry (file+datetree (concat org-directory "/notes.org"))
+               "* %?\n%U\n" :clock-in t :clock-resume t)
+              )))
+;; custom timestamps
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%b %e, %Y>" . "<%b %e, %Y %H:%M>"))
 
 (provide 'my-settings)
